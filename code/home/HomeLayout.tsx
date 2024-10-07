@@ -30,7 +30,14 @@ export function HomeLayout() {
 function HomeLayoutTouch() {
   return (
     <YStack f={1}>
-      <XStack ai="center" jc="space-between" py="$1" px="$4" bbc="$borderColor" bbw={1}>
+      <XStack
+        ai="center"
+        jc="space-between"
+        py="$1"
+        px="$4"
+        bbc="$borderColor"
+        bbw={1}
+      >
         <Logo />
         <ToggleThemeLink f={0} />
       </XStack>
@@ -41,7 +48,14 @@ function HomeLayoutTouch() {
         </ScrollView>
       </YStack>
 
-      <XStack ai="center" jc="space-around" btw={1} btc="$borderColor" py="$1" gap="$1">
+      <XStack
+        ai="center"
+        jc="space-around"
+        btw={1}
+        btc="$borderColor"
+        py="$1"
+        gap="$1"
+      >
         <NavLinks />
       </XStack>
     </YStack>
@@ -50,7 +64,10 @@ function HomeLayoutTouch() {
 
 function HomeLayoutMouse() {
   return (
-    <XStack f={1} mah="100vh">
+    <XStack
+      f={1}
+      mah="100vh"
+    >
       <YStack
         miw={220}
         ai="center"
@@ -94,15 +111,25 @@ function HomeLayoutMouse() {
 function NavLinks() {
   return (
     <>
-      <SideMenuLink href="/" subPaths={['/post/']} Icon={HomeIcons.Home}>
+      <SideMenuLink
+        href="/"
+        subPaths={['/post/']}
+        Icon={HomeIcons.Home}
+      >
         Feed
       </SideMenuLink>
 
-      <SideMenuLink href="/notifications" Icon={HomeIcons.Notifications}>
+      <SideMenuLink
+        href="/notifications"
+        Icon={HomeIcons.Notifications}
+      >
         Notifications
       </SideMenuLink>
 
-      <SideMenuLink href="/profile" Icon={HomeIcons.User}>
+      <SideMenuLink
+        href="/profile"
+        Icon={HomeIcons.User}
+      >
         Profile
       </SideMenuLink>
     </>
@@ -119,7 +146,10 @@ const IconFrame = styled(View, {
 const ToggleThemeLink = (props: ViewProps) => {
   const { onPress, Icon, setting } = useToggleTheme()
   return (
-    <LinkContainer {...props} onPress={onPress}>
+    <LinkContainer
+      {...props}
+      onPress={onPress}
+    >
       <IconFrame>
         <Icon size={28} />
       </IconFrame>
@@ -143,10 +173,14 @@ const SideMenuLink = ({
   children: ReactNode
 }) => {
   const pathname = usePathname()
-  const isActive = pathname === href || subPaths?.some((p) => pathname.startsWith(p))
+  const isActive =
+    pathname === href || subPaths?.some((p) => pathname.startsWith(p))
 
   return (
-    <Link asChild href={href}>
+    <Link
+      asChild
+      href={href}
+    >
       <LinkContainer isActive={isActive}>
         <IconFrame>
           <Icon size={28} />

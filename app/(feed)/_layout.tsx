@@ -29,7 +29,10 @@ export default function FeedLayout() {
               },
             }}
           />
-          <Stack.Screen name="post/[id]" options={{ title: 'Post' }} />
+          <Stack.Screen
+            name="post/[id]"
+            options={{ title: 'Post' }}
+          />
         </Stack>
       )}
     </View>

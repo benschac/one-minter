@@ -24,9 +24,21 @@ export const FeedCard = (props: FeedItem) => {
 
   const content = (
     <Card tag="a">
-      <Image width={32} height={32} br={100} mt="$2" src={props.user.avatar} />
-      <YStack f={1} gap="$2">
-        <Paragraph size="$5" fow="bold">
+      <Image
+        width={32}
+        height={32}
+        br={100}
+        mt="$2"
+        src={props.user.avatar}
+      />
+      <YStack
+        f={1}
+        gap="$2"
+      >
+        <Paragraph
+          size="$5"
+          fow="bold"
+        >
           {props.user.name}
         </Paragraph>
 
@@ -40,10 +52,24 @@ export const FeedCard = (props: FeedItem) => {
           {props.content}
         </Paragraph>
         {!props.isReply ? (
-          <XStack mt="$0" jc="flex-end" px="$5" gap="$5">
-            <StatItem Icon={Reply} count={props.repliesCount} />
-            <StatItem Icon={Repeat} count={props.repostsCount} />
-            <StatItem Icon={Heart} count={props.likesCount} />
+          <XStack
+            mt="$0"
+            jc="flex-end"
+            px="$5"
+            gap="$5"
+          >
+            <StatItem
+              Icon={Reply}
+              count={props.repliesCount}
+            />
+            <StatItem
+              Icon={Repeat}
+              count={props.repostsCount}
+            />
+            <StatItem
+              Icon={Heart}
+              count={props.likesCount}
+            />
           </XStack>
         ) : null}
       </YStack>
@@ -53,7 +79,10 @@ export const FeedCard = (props: FeedItem) => {
   return props.disableLink ? (
     content
   ) : (
-    <Link asChild href={`/post/${props.id}`}>
+    <Link
+      asChild
+      href={`/post/${props.id}`}
+    >
       {content}
     </Link>
   )
@@ -61,9 +90,20 @@ export const FeedCard = (props: FeedItem) => {
 
 const StatItem = ({ Icon, count }: { Icon: any; count: number }) => {
   return (
-    <XStack ai="center" jc="center" gap="$2">
-      <Icon color="$color10" size={14} />
-      <SizableText fow="700" color="$color10" userSelect="none">
+    <XStack
+      ai="center"
+      jc="center"
+      gap="$2"
+    >
+      <Icon
+        color="$color10"
+        size={14}
+      />
+      <SizableText
+        fow="700"
+        color="$color10"
+        userSelect="none"
+      >
         {count}
       </SizableText>
     </XStack>

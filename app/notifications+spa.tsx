@@ -1,5 +1,11 @@
 import { isWeb } from 'tamagui'
-import { type Href, SafeAreaView, useLoader, type LoaderProps, getURL } from 'one'
+import {
+  type Href,
+  SafeAreaView,
+  useLoader,
+  type LoaderProps,
+  getURL,
+} from 'one'
 import { NotificationCard } from '~/code/notifications/NotificationCard'
 import { PageContainer } from '~/code/ui/PageContainer'
 import { db } from '~/code/db/connection'
@@ -27,7 +33,9 @@ type NotificationsResponse = {
   limit: number
 }
 
-export async function loader({ path }: LoaderProps): Promise<NotificationsResponse> {
+export async function loader({
+  path,
+}: LoaderProps): Promise<NotificationsResponse> {
   try {
     const url = new URL(getURL() + path)
     const page = Number(url.searchParams.get('page') || '1')
@@ -104,21 +112,23 @@ export async function loader({ path }: LoaderProps): Promise<NotificationsRespon
 
     const notifications = await notificationsQuery
 
-    const formattedNotifications: Notification[] = notifications.map((notification) => ({
-      action: notification.actionType,
-      fromUser: {
-        username: notification.username,
-        userLink: `/profile/${notification.userId}`,
-        avatar: notification.avatar,
-      },
-      post: notification.postId
-        ? {
-            postLink: `/post/${notification.postId}`,
-            content: notification.postContent,
-          }
-        : null,
-      createdAt: notification.createdAt,
-    }))
+    const formattedNotifications: Notification[] = notifications.map(
+      (notification) => ({
+        action: notification.actionType,
+        fromUser: {
+          username: notification.username,
+          userLink: `/profile/${notification.userId}`,
+          avatar: notification.avatar,
+        },
+        post: notification.postId
+          ? {
+              postLink: `/post/${notification.postId}`,
+              content: notification.postContent,
+            }
+          : null,
+        createdAt: notification.createdAt,
+      })
+    )
 
     return {
       notifications: formattedNotifications,
@@ -128,19 +138,28 @@ export async function loader({ path }: LoaderProps): Promise<NotificationsRespon
     }
   } catch (error) {
     console.error(error)
-    throw new Error(`Failed to fetch notifications: ${(error as Error).message}`)
+    throw new Error(
+      `Failed to fetch notifications: ${(error as Error).message}`
+    )
   }
 }
 
 export default function NotificationsPage() {
   const { notifications } = useLoader(loader)
   const feed = notifications.map((item, i) => {
-    return <NotificationCard key={i} {...item} />
+    return (
+      <NotificationCard
+        key={i}
+        {...item}
+      />
+    )
   })
 
   return (
     <>
-      <PageContainer>{isWeb ? feed : <SafeAreaView>{feed}</SafeAreaView>}</PageContainer>
+      <PageContainer>
+        {isWeb ? feed : <SafeAreaView>{feed}</SafeAreaView>}
+      </PageContainer>
     </>
   )
 }

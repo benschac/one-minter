@@ -10,7 +10,10 @@ export function ToggleThemeButton() {
   const { onPress, Icon } = useToggleTheme()
 
   return (
-    <View pointerEvents="auto" onPress={onPress}>
+    <View
+      pointerEvents="auto"
+      onPress={onPress}
+    >
       <Icon size={22} />
     </View>
   )

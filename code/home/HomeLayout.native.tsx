@@ -17,7 +17,12 @@ export function HomeLayout() {
         name="(feed)"
         options={{
           title: 'Feed',
-          tabBarIcon: ({ color }) => <HomeIcons.Home size={20} color={color} />,
+          tabBarIcon: ({ color }) => (
+            <HomeIcons.Home
+              size={20}
+              color={color}
+            />
+          ),
         }}
       />
 
@@ -25,7 +30,12 @@ export function HomeLayout() {
         name="notifications"
         options={{
           title: 'Notifications',
-          tabBarIcon: ({ color }) => <HomeIcons.Notifications size={20} color={color} />,
+          tabBarIcon: ({ color }) => (
+            <HomeIcons.Notifications
+              size={20}
+              color={color}
+            />
+          ),
         }}
       />
 
@@ -33,7 +43,12 @@ export function HomeLayout() {
         name="profile"
         options={{
           title: 'Profile',
-          tabBarIcon: ({ color }) => <HomeIcons.User size={20} color={color} />,
+          tabBarIcon: ({ color }) => (
+            <HomeIcons.User
+              size={20}
+              color={color}
+            />
+          ),
         }}
       />
     </Tabs>

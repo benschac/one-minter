@@ -24,9 +24,10 @@ export async function loader({ params }) {
           name: users.username,
           avatar: users.avatarUrl,
         },
-        likesCount: sql`(SELECT COUNT(*) FROM ${likes} WHERE ${likes.postId} = ${posts.id})`.as(
-          'likesCount'
-        ),
+        likesCount:
+          sql`(SELECT COUNT(*) FROM ${likes} WHERE ${likes.postId} = ${posts.id})`.as(
+            'likesCount'
+          ),
         repliesCount:
           sql`(SELECT COUNT(*) FROM ${replies} WHERE ${replies.postId} = ${posts.id})`.as(
             'repliesCount'
@@ -87,7 +88,10 @@ export function PostPage() {
   return (
     <>
       <PageContainer>
-        <FeedCard {...data} disableLink />
+        <FeedCard
+          {...data}
+          disableLink
+        />
         {data.replies && data.replies.length > 0 && (
           <YStack
             marginLeft="$7"
@@ -96,7 +100,12 @@ export function PostPage() {
             borderColor="$borderColor"
           >
             {data.replies.map((reply) => (
-              <FeedCard key={reply.id} {...reply} disableLink isReply />
+              <FeedCard
+                key={reply.id}
+                {...reply}
+                disableLink
+                isReply
+              />
             ))}
           </YStack>
         )}

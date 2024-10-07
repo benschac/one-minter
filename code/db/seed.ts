@@ -125,16 +125,27 @@ const topics: Topic[] = [
     subject: 'Responsive design',
     quirk: 'spending more time adjusting margins than coding actual features',
   },
-  { subject: 'AI-driven development', quirk: 'realizing the AI writes better comments than I do' },
+  {
+    subject: 'AI-driven development',
+    quirk: 'realizing the AI writes better comments than I do',
+  },
   {
     subject: 'Cross-browser compatibility',
-    quirk: 'feeling nostalgic for the days when we only had to support one browser',
+    quirk:
+      'feeling nostalgic for the days when we only had to support one browser',
   },
-  { subject: 'React', quirk: 'creating 47 components for a simple landing page' },
-  { subject: 'Dark mode', quirk: 'accidentally designing for light mode at 3 AM' },
+  {
+    subject: 'React',
+    quirk: 'creating 47 components for a simple landing page',
+  },
+  {
+    subject: 'Dark mode',
+    quirk: 'accidentally designing for light mode at 3 AM',
+  },
   {
     subject: 'Progressive Web Apps',
-    quirk: "explaining to my mom that it's not a 'real' app, but also not just a website",
+    quirk:
+      "explaining to my mom that it's not a 'real' app, but also not just a website",
   },
   {
     subject: 'Cross-platform development',
@@ -152,12 +163,19 @@ const topics: Topic[] = [
     subject: 'Voice search optimization',
     quirk: "talking to my code hoping it'll understand me better",
   },
-  { subject: 'JavaScript frameworks', quirk: 'learning a new one every time I start a project' },
-  { subject: 'CSS-in-JS', quirk: 'forgetting where I put that one crucial style' },
+  {
+    subject: 'JavaScript frameworks',
+    quirk: 'learning a new one every time I start a project',
+  },
+  {
+    subject: 'CSS-in-JS',
+    quirk: 'forgetting where I put that one crucial style',
+  },
   { subject: 'WebAssembly', quirk: 'pretending I understand how it works' },
   {
     subject: 'Microservices',
-    quirk: 'drawing so many boxes and arrows that my architecture diagram looks like abstract art',
+    quirk:
+      'drawing so many boxes and arrows that my architecture diagram looks like abstract art',
   },
   { subject: 'GraphQL', quirk: 'over-fetching data out of habit anyway' },
   {
@@ -166,14 +184,21 @@ const topics: Topic[] = [
   },
   {
     subject: 'TypeScript',
-    quirk: 'feeling smug about catching a type error, then spending hours fixing it',
+    quirk:
+      'feeling smug about catching a type error, then spending hours fixing it',
   },
-  { subject: 'Web3', quirk: 'nodding along in meetings while secretly Googling what it means' },
+  {
+    subject: 'Web3',
+    quirk: 'nodding along in meetings while secretly Googling what it means',
+  },
   {
     subject: 'Low-code platforms',
     quirk: 'spending more time customizing than I would have spent coding',
   },
-  { subject: 'Code reviews', quirk: 'leaving comments on my own PR because no one else will' },
+  {
+    subject: 'Code reviews',
+    quirk: 'leaving comments on my own PR because no one else will',
+  },
 ]
 
 const formats: string[] = [
@@ -236,9 +261,12 @@ function generatePostContent(topic: Topic): string {
 }
 
 function generateReply(topic: Topic): string {
-  const template = replyTemplates[Math.floor(Math.random() * replyTemplates.length)]
+  const template =
+    replyTemplates[Math.floor(Math.random() * replyTemplates.length)]
 
-  return template.replace('{subject}', topic.subject).replace('{quirk}', topic.quirk)
+  return template
+    .replace('{subject}', topic.subject)
+    .replace('{quirk}', topic.quirk)
 }
 
 const seed = async () => {
@@ -258,7 +286,9 @@ const seed = async () => {
     console.info('Existing data cleared.')
 
     // Insert users
-    const randomizedUserCount = Math.round(USER_COUNT * (0.8 + Math.random() * 0.4))
+    const randomizedUserCount = Math.round(
+      USER_COUNT * (0.8 + Math.random() * 0.4)
+    )
     console.info(`Generating ${randomizedUserCount} users with random names...`)
     const userIds = await insertUsers(randomizedUserCount)
     console.info(`${userIds.length} users generated.`)
@@ -323,7 +353,9 @@ async function insertUsers(count: number) {
 async function generatePosts(userIds: { id: number }[]) {
   console.time('generatePosts')
   for (const user of userIds) {
-    const randomizedPostCount = Math.round(POST_COUNT_PER_USER * (0.8 + Math.random() * 0.4))
+    const randomizedPostCount = Math.round(
+      POST_COUNT_PER_USER * (0.8 + Math.random() * 0.4)
+    )
     for (let i = 0; i < randomizedPostCount; i++) {
       try {
         const topic = topics[Math.floor(Math.random() * topics.length)]
@@ -342,10 +374,15 @@ async function generatePosts(userIds: { id: number }[]) {
   console.timeEnd('generatePosts')
 }
 
-async function generateReplies(userIds: { id: number }[], allPostIds: { id: number }[]) {
+async function generateReplies(
+  userIds: { id: number }[],
+  allPostIds: { id: number }[]
+) {
   console.time('generateReplies')
   for (const post of allPostIds) {
-    const randomizedReplyCount = Math.round(REPLY_COUNT_PER_POST * (0.8 + Math.random() * 0.4))
+    const randomizedReplyCount = Math.round(
+      REPLY_COUNT_PER_POST * (0.8 + Math.random() * 0.4)
+    )
     for (let j = 0; j < randomizedReplyCount; j++) {
       try {
         const replyingUser = userIds[Math.floor(Math.random() * userIds.length)]
@@ -367,7 +404,9 @@ async function generateReplies(userIds: { id: number }[], allPostIds: { id: numb
 async function generateFollows(userIds: { id: number }[]) {
   console.time('generateFollows')
   for (const follower of userIds) {
-    const randomizedFollowCount = Math.round(FOLLOW_COUNT_PER_USER * (0.8 + Math.random() * 0.4))
+    const randomizedFollowCount = Math.round(
+      FOLLOW_COUNT_PER_USER * (0.8 + Math.random() * 0.4)
+    )
     const followingIds = faker.helpers.arrayElements(
       userIds.filter((user) => user.id !== follower.id),
       Math.min(randomizedFollowCount, userIds.length - 1)
@@ -390,7 +429,10 @@ async function generateFollows(userIds: { id: number }[]) {
   console.timeEnd('generateFollows')
 }
 
-async function generateLikes(userIds: { id: number }[], allPostIds: { id: number }[]) {
+async function generateLikes(
+  userIds: { id: number }[],
+  allPostIds: { id: number }[]
+) {
   console.time('generateLikes')
   for (const user of userIds) {
     const postIds = faker.helpers.arrayElements(
@@ -405,14 +447,20 @@ async function generateLikes(userIds: { id: number }[], allPostIds: { id: number
           createdAt: faker.date.recent({ days: 1 }),
         })
       } catch (error) {
-        console.error(`Failed to insert like (user ${user.id}, post ${post.id}):`, error)
+        console.error(
+          `Failed to insert like (user ${user.id}, post ${post.id}):`,
+          error
+        )
       }
     }
   }
   console.timeEnd('generateLikes')
 }
 
-async function generateReposts(userIds: { id: number }[], allPostIds: { id: number }[]) {
+async function generateReposts(
+  userIds: { id: number }[],
+  allPostIds: { id: number }[]
+) {
   console.time('generateReposts')
   const allPostsWithUsers: {
     id: number
@@ -434,7 +482,10 @@ async function generateReposts(userIds: { id: number }[], allPostIds: { id: numb
           createdAt: faker.date.recent({ days: 1 }),
         })
       } catch (error) {
-        console.error(`Failed to insert repost (user ${user.id}, post ${post.id}):`, error)
+        console.error(
+          `Failed to insert repost (user ${user.id}, post ${post.id}):`,
+          error
+        )
       }
     }
   }
