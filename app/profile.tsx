@@ -43,9 +43,10 @@ export async function loader({ path }: LoaderProps) {
           name: users.username,
           avatar: users.avatarUrl,
         },
-        likesCount: sql`(SELECT COUNT(*) FROM ${likes} WHERE ${likes.postId} = ${posts.id})`.as(
-          'likesCount'
-        ),
+        likesCount:
+          sql`(SELECT COUNT(*) FROM ${likes} WHERE ${likes.postId} = ${posts.id})`.as(
+            'likesCount'
+          ),
         repliesCount:
           sql`(SELECT COUNT(*) FROM ${replies} WHERE ${replies.postId} = ${posts.id})`.as(
             'repliesCount'
@@ -69,9 +70,10 @@ export async function loader({ path }: LoaderProps) {
           name: users.username,
           avatar: users.avatarUrl,
         },
-        likesCount: sql`(SELECT COUNT(*) FROM ${likes} WHERE ${likes.postId} = ${posts.id})`.as(
-          'likesCount'
-        ),
+        likesCount:
+          sql`(SELECT COUNT(*) FROM ${likes} WHERE ${likes.postId} = ${posts.id})`.as(
+            'likesCount'
+          ),
         repliesCount:
           sql`(SELECT COUNT(*) FROM ${replies} WHERE ${replies.postId} = ${posts.id})`.as(
             'repliesCount'
@@ -108,7 +110,12 @@ export default function ProfilePage() {
   return (
     <PageContainer>
       <ScrollView>
-        <YStack pos="relative" w="100%" h={180} ov="hidden">
+        <YStack
+          pos="relative"
+          w="100%"
+          h={180}
+          ov="hidden"
+        >
           <Image
             pos="absolute"
             t={0}
@@ -148,9 +155,19 @@ export default function ProfilePage() {
                 marginBottom="$4"
                 mt="$4"
               >
-                <XStack gap="$2" marginBottom="$2">
-                  <Repeat2 size={12} color="$accent1" />
-                  <Text ff="$body" color="$accent1" fontSize={10}>
+                <XStack
+                  gap="$2"
+                  marginBottom="$2"
+                >
+                  <Repeat2
+                    size={12}
+                    color="$accent1"
+                  />
+                  <Text
+                    ff="$body"
+                    color="$accent1"
+                    fontSize={10}
+                  >
                     Reposted by {userData.name}
                   </Text>
                 </XStack>
@@ -158,7 +175,12 @@ export default function ProfilePage() {
               </YStack>
             )
           }
-          return <FeedCard key={post.id} {...post} />
+          return (
+            <FeedCard
+              key={post.id}
+              {...post}
+            />
+          )
         })}
       </ScrollView>
     </PageContainer>

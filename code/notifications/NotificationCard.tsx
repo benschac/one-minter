@@ -25,9 +25,17 @@ const actionVerbs: { [key in NotificationItem['action']]: string } = {
 
 export const NotificationCard = (props: NotificationItem) => {
   return (
-    <Link asChild href={props.post ? props.post.postLink : props.fromUser.userLink}>
+    <Link
+      asChild
+      href={props.post ? props.post.postLink : props.fromUser.userLink}
+    >
       <Card tag="a">
-        <Image width={32} height={32} br={100} src={props.fromUser.avatar} />
+        <Image
+          width={32}
+          height={32}
+          br={100}
+          src={props.fromUser.avatar}
+        />
         <YStack f={1}>
           <Paragraph size="$5">
             <Text fontWeight="bold">{props.fromUser.username}</Text>

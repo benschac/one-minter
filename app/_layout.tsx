@@ -15,9 +15,18 @@ export default function Layout() {
       {isWeb && (
         <>
           <meta charSet="utf-8" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-          <link rel="icon" href="/favicon.svg" />
+          <meta
+            httpEquiv="X-UA-Compatible"
+            content="IE=edge"
+          />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=5"
+          />
+          <link
+            rel="icon"
+            href="/favicon.svg"
+          />
         </>
       )}
 
@@ -36,7 +45,12 @@ const TamaguiRootProvider = ({ children }: { children: React.ReactNode }) => {
   const [scheme] = useColorScheme()
 
   return (
-    <TamaguiProvider disableInjectCSS config={config} defaultTheme={scheme} disableRootThemeClass>
+    <TamaguiProvider
+      disableInjectCSS
+      config={config}
+      defaultTheme={scheme}
+      disableRootThemeClass
+    >
       {children}
     </TamaguiProvider>
   )

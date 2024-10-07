@@ -70,9 +70,12 @@ export async function GET(request: Request) {
   // Check if the user is logged in
   const session = getSession(request)
   if (session?.user) {
-    return new Response(JSON.stringify({ loggedIn: true, user: session.user }), {
-      headers: { 'Content-Type': 'application/json' },
-    })
+    return new Response(
+      JSON.stringify({ loggedIn: true, user: session.user }),
+      {
+        headers: { 'Content-Type': 'application/json' },
+      }
+    )
   }
   return new Response(JSON.stringify({ loggedIn: false }), {
     headers: { 'Content-Type': 'application/json' },
