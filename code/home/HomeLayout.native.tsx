@@ -14,6 +14,19 @@ export function HomeLayout() {
       }}
     >
       <Tabs.Screen
+        name="mint"
+        options={{
+          title: 'Mint',
+          tabBarIcon: ({ color }) => (
+            <HomeIcons.Mint
+              size={20}
+              color={color}
+            />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
         name="(feed)"
         options={{
           title: 'Feed',

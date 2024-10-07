@@ -112,6 +112,12 @@ function NavLinks() {
   return (
     <>
       <SideMenuLink
+        href="/mint"
+        Icon={HomeIcons.Mint}
+      >
+        Mint
+      </SideMenuLink>
+      <SideMenuLink
         href="/"
         subPaths={['/post/']}
         Icon={HomeIcons.Home}
