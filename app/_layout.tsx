@@ -1,3 +1,7 @@
+import 'fast-text-encoding'
+import 'react-native-get-random-values'
+import '@ethersproject/shims'
+
 import '@tamagui/core/reset.css'
 import './_layout.css'
 import '~/code/styles/base.css'
